@@ -1,7 +1,7 @@
 <h1>My tasks</h1>
 
 
-<div class="container">
+<div class="tasks-container">
   <% @tasks.each do |task| %>
    <!-- Checkbox should be checked if task.completed is true -->
     <% if task.completed %>
@@ -12,3 +12,5 @@
     <%= link_to task.title, task_path(task) %><br>
   <% end %>
 </div>
+
+<%= link_to "Create new task", new_path %><br>
