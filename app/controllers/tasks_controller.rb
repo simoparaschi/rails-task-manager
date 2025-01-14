@@ -1,11 +1,13 @@
 class TasksController < ApplicationController
-  def list
+  before_action :find_task, only: [:show, :edit, :update, :destroy]
+
+  def index
     @tasks = Task.all
   end
 
-  def find
-    @id = params[:id]
-    @current_task = Task.find(@id)
+  def show
+    # @id = params[:id]
+    # @current_task = Task.find(@id)
   end
 
   def new
@@ -19,20 +21,20 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @id = params[:id]
-    @current_task = Task.find(@id)
+    # @id = params[:id]
+    # @current_task = Task.find(@id)
   end
 
   def update
-    @id = params[:id]
-    @current_task = Task.find(@id)
+    # @id = params[:id]
+    # @current_task = Task.find(@id)
     @current_task.update(form_params)
     redirect_to task_path(@current_task)
   end
 
   def destroy
-    @id = params[:id]
-    @current_task = Task.find(@id)
+    # @id = params[:id]
+    # @current_task = Task.find(@id)
     @current_task.destroy
     redirect_to tasks_path, status: :see_other
   end
@@ -41,5 +43,10 @@ class TasksController < ApplicationController
 
   def form_params
     params.require(:task).permit(:title, :details)
+  end
+
+  def find_task
+    @id = params[:id]
+    @current_task = Task.find(@id)
   end
 end
