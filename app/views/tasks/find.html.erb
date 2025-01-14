@@ -1,5 +1,7 @@
 <h1><%= @current_task.title %></h1>
 <p><%= @current_task.details %></p>
+<p><%= link_to "Update task", edit_path %></p>
+
 
 <div class="flex">
   <!-- Checkbox should be checked if task.completed is true -->

@@ -18,6 +18,18 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def edit
+    @id = params[:id]
+    @current_task = Task.find(@id)
+  end
+
+  def update
+    @id = params[:id]
+    @current_task = Task.find(@id)
+    @current_task.update(form_params)
+    redirect_to task_path(@current_task)
+  end
+
   private
 
   def form_params
