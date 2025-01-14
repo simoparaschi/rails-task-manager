@@ -30,6 +30,13 @@ class TasksController < ApplicationController
     redirect_to task_path(@current_task)
   end
 
+  def destroy
+    @id = params[:id]
+    @current_task = Task.find(@id)
+    @current_task.destroy
+    redirect_to tasks_path, status: :see_other
+  end
+
   private
 
   def form_params
